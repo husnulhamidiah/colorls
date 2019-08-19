@@ -1,0 +1,24 @@
+{
+  "name": "colorls",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": "bin/colorls",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "cli-columns": "^3.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
