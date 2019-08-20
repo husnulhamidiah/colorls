@@ -8,6 +8,8 @@ const folders = require('./config/folders.json')
 const { argv } = yargs
   .default('dir-color', '234,254,132')
   .default('file-color', '230,225,207')
+  .boolean('sort')
+  .default('sort', true)
   .coerce(['dir-color', 'file-color'], (arg) => arg.split(','))
   .coerce('_', (arg) => ['-p', ...arg])
 
@@ -51,6 +53,14 @@ ls.on('close', code => {
     const filenames = result.split(/\n/gi).filter(Boolean)
     if (!single) console.log(chalk.rgb(104, 213, 255)(filenames.shift()))
     if (list) console.log(chalk.bold.rgb(104, 213, 255)(filenames.shift()))
+
+    if (argv.sort) {
+      filenames.sort((a, b) => {
+        if (a.charAt(a.length - 1) === '/') return -1
+        if (a.charAt(a.length - 1) !== '/') return 1
+        return 0
+      })
+    }
 
     const iconized = filenames.map(filename => {
       filename = iconizer(filename)
