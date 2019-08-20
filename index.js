@@ -21,7 +21,7 @@ const list = [...argv._]
 
 const iconizer = (item) => {
   if (/[^ ]+\//gi.test(item)) {
-    const ext = item.split('').slice(0, -1).join('')
+    const ext = item = item.split('').slice(0, -1).join('')
     const icon = folders[ext] ? folders[ext] : folders['folder']
     item = chalk.rgb(...argv['dir-color'])(`${icon}  ${item}`)
   } else {
