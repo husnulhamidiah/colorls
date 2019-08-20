@@ -11,12 +11,12 @@ const iconizer = (item) => {
   if (/[^ ]+\//gi.test(item)) {
     const ext = item.split('').slice(0, -1).join('')
     const icon = folders[ext] ? folders[ext] : folders['folder']
-    item = chalk.green(`${icon}  ${item}`)
+    item = chalk.rgb(234, 254, 132)(`${icon}  ${item}`)
   } else {
     const ext = ([...item.match(/\.[0-9a-z]+$/gi) || []][0] || '')
       .split('').slice(1).join('')
     const icon = files[ext] ? files[ext] : files['file']
-    item = chalk.white(`${icon}  ${item}`)
+    item = chalk.rgb(230, 225, 207)(`${icon}  ${item}`)
   }
   return item
 }
@@ -29,15 +29,17 @@ ls.stdout.on('data', data => {
 })
 
 ls.stderr.setEncoding('utf8')
-ls.stderr.on('data', data => console.log(data))
+ls.stderr.on('data', data => console.log(chalk.rgb(255, 101, 101)(data)))
 
 ls.on('close', code => {
+  if (code !== 0) return false
+
   const results = output.split(/\r?\n\n/)
   const single = results.length === 1
 
   results.map(result => {
     const filenames = result.split(/\n/gi).filter(Boolean)
-    if (!single) console.log(chalk.blue(filenames.shift()))
+    if (!single) console.log(chalk.rgb(104, 213, 255)(filenames.shift()))
 
     const iconized = filenames.map(filename => {
       filename = iconizer(filename)
