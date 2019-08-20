@@ -1,24 +1,32 @@
 const { spawn } = require('child_process')
 const chalk = require('chalk')
 const columns = require('cli-columns')
+const yargs = require('yargs')
 const files = require('./config/files.json')
 const folders = require('./config/folders.json')
 
-const argv = ['-p', ...process.argv.slice(2)]
-const ls = spawn('ls', [...argv])
+const { argv } = yargs
+  .default('dir-color', '234,254,132')
+  .default('file-color', '230,225,207')
+  .coerce(['dir-color', 'file-color'], (arg) => arg.split(','))
+  .coerce('_', (arg) => ['-p', ...arg])
 
-const list = [...argv].join(' ').match(/\B-\w+/gi).join('').match(/[ls]/g)
+const ls = spawn('ls', [...argv._])
+
+const list = [...argv._]
+  .join(' ').match(/\B-\w+/gi)
+  .join('').match(/[ls]/g)
 
 const iconizer = (item) => {
   if (/[^ ]+\//gi.test(item)) {
     const ext = item.split('').slice(0, -1).join('')
     const icon = folders[ext] ? folders[ext] : folders['folder']
-    item = chalk.rgb(234, 254, 132)(`${icon}  ${item}`)
+    item = chalk.rgb(...argv['dir-color'])(`${icon}  ${item}`)
   } else {
     const ext = ([...item.match(/\.[0-9a-z]+$/gi) || []][0] || '')
       .split('').slice(1).join('')
     const icon = files[ext] ? files[ext] : files['file']
-    item = chalk.rgb(230, 225, 207)(`${icon}  ${item}`)
+    item = chalk.rgb(...argv['file-color'])(`${icon}  ${item}`)
   }
   return item
 }

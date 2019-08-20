@@ -6,7 +6,8 @@
   "bin": "bin/colorls",
   "dependencies": {
     "chalk": "^2.4.2",
-    "cli-columns": "^3.1.2"
+    "cli-columns": "^3.1.2",
+    "yargs": "^14.0.0"
   },
   "devDependencies": {
     "eslint": "^6.1.0",
