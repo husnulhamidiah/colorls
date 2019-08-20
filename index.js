@@ -5,12 +5,36 @@ const yargs = require('yargs')
 const files = require('./config/files.json')
 const folders = require('./config/folders.json')
 
+const parseColor = (arg) =>
+  Array.isArray(arg) ? arg[0].split(',') : arg.split(',')
+
 const { argv } = yargs
-  .default('dir-color', '234,254,132')
-  .default('file-color', '230,225,207')
-  .boolean('sort')
-  .default('sort', true)
-  .coerce(['dir-color', 'file-color'], (arg) => arg.split(','))
+  .options({
+    sort: {
+      default: true,
+      type: 'boolean'
+    },
+    'dir-color': {
+      default: '234,254,132',
+      type: 'string',
+      coerce: (arg) => parseColor(arg)
+    },
+    'file-color': {
+      default: '230,225,207',
+      type: 'string',
+      coerce: (arg) => parseColor(arg)
+    },
+    'meta-color': {
+      default: '104,213,255',
+      type: 'string',
+      coerce: (arg) => parseColor(arg)
+    },
+    'error-color': {
+      default: '255,101,101',
+      type: 'string',
+      coerce: (arg) => parseColor(arg)
+    }
+  })
   .coerce('_', (arg) => ['-p', ...arg])
 
 const ls = spawn('ls', [...argv._])
@@ -41,7 +65,7 @@ ls.stdout.on('data', data => {
 })
 
 ls.stderr.setEncoding('utf8')
-ls.stderr.on('data', data => console.log(chalk.rgb(255, 101, 101)(data)))
+ls.stderr.on('data', data => console.log(chalk.rgb(...argv['error-color'])(data)))
 
 ls.on('close', code => {
   if (code !== 0) return false
@@ -51,8 +75,8 @@ ls.on('close', code => {
 
   results.map(result => {
     const filenames = result.split(/\n/gi).filter(Boolean)
-    if (!single) console.log(chalk.rgb(104, 213, 255)(filenames.shift()))
-    if (list) console.log(chalk.bold.rgb(104, 213, 255)(filenames.shift()))
+    if (!single) console.log(chalk.rgb(...argv['meta-color'])(filenames.shift()))
+    if (list) console.log(chalk.bold.rgb(...argv['meta-color'])(filenames.shift()))
 
     if (argv.sort) {
       filenames.sort((a, b) => {
