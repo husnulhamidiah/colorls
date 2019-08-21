@@ -19,7 +19,7 @@ A Node.js app that colorizes the ls output with color and icons. Here are the sc
 
     *Note for iTerm2 users - Please enable the Nerd Font at iTerm2 > Preferences > Profiles > Text > Non-ASCII font > Hack Regular Nerd Font Complete.*
 
-3. Install the colorls app with `npm install -g colorls`
+3. Install the colorls app with `npm install -g @husnulanwari/colorls`
 
 4. Start using colorls 🎉
 
