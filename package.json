@@ -1,5 +1,5 @@
 {
-  "name": "colorls",
+  "name": "@husnulanwari/colorls",
   "version": "1.0.0",
   "description": "ls except with fancy icon and color",
   "main": "index.js",
