@@ -1,9 +1,11 @@
 {
   "name": "colorls",
   "version": "1.0.0",
-  "description": "",
+  "description": "ls except with fancy icon and color",
   "main": "index.js",
-  "bin": "bin/colorls",
+  "bin": {
+    "colorls": "bin/colorls"
+  },
   "dependencies": {
     "chalk": "^2.4.2",
     "cli-columns": "^3.1.2",
@@ -20,6 +22,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "MIT"
+  "author": "Husnul Anwari <husnulhamidiah@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/husnulhamidiah/colorls.git"
+  },
+  "keywords": [
+    "ls",
+    "color",
+    "cli",
+    "colorls"
+  ],
+  "bugs": {
+    "url": "https://github.com/husnulhamidiah/colorls/issues"
+  },
+  "homepage": "https://github.com/husnulhamidiah/colorls#readme"
 }
