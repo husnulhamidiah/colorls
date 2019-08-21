@@ -39,9 +39,9 @@ const { argv } = yargs
 
 const ls = spawn('ls', [...argv._])
 
-const list = [...argv._]
-  .join(' ').match(/\B-\w+/gi)
-  .join('').match(/[ls]/g)
+const args = [...argv._].join(' ').match(/\B-\w+/gi)
+const list = args.join('').match(/[ls]/g)
+const oneline = args.join('').match(/[1]/g)
 
 const iconizer = (item) => {
   if (/[^ ]+\//gi.test(item)) {
@@ -92,7 +92,7 @@ ls.on('close', code => {
       return filename
     })
 
-    if (list) {
+    if (list || oneline) {
       console.log(iconized.join('\n'))
     } else {
       console.log(columns(iconized, { sort: false }))
