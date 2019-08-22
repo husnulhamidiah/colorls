@@ -9,7 +9,7 @@
 
 A Node.js app that colorizes the ls output with color and icons. Here are the screenshots of working example on an iTerm2 terminal (Mac OS), `oh-my-zsh` with `spacehip` theme and `powerline nerd-font + awesome-config` font with the `Ayu dark` color theme.
 
-![image](https://user-images.githubusercontent.com/7609801/63421229-6b5a4e00-c432-11e9-8779-2b09bb4cfef9.png)
+![image](https://user-images.githubusercontent.com/7609801/63525561-1d277680-c528-11e9-968e-83487525a4d9.png)
 
 ## Installation
 
@@ -23,7 +23,7 @@ A Node.js app that colorizes the ls output with color and icons. Here are the sc
 
 4. Start using colorls 🎉
 
-5. Have a look at Recommended configurations and Custom configurations.
+5. Have a look at [Recommended configurations](#recommended-configurations) and [Custom configurations](#custom-configurations) .
 
 ## Recommended configurations
 
@@ -40,19 +40,19 @@ A Node.js app that colorizes the ls output with color and icons. Here are the sc
 
 - With `--help` : Prints not so very helpful help menu (updated soon)
 
-    ![image](https://user-images.githubusercontent.com/7609801/63420976-fbe45e80-c431-11e9-86a7-bdfb69e3bb2f.png)
+    ![image](https://user-images.githubusercontent.com/7609801/63525567-1ef13a00-c528-11e9-8d82-87fb593a117d.png)
 
-- With `--sort` (default): Sort output to show directory first. Use `--no-sort` to show `ls` output as is :
+- With `--sort` (default): Sort output to show directory first. Use `--no-sort` to show `ls` output as usual :
 
-    ![image](https://user-images.githubusercontent.com/7609801/63421778-61851a80-c433-11e9-919d-e721c83d70b6.png)
+    ![image](https://user-images.githubusercontent.com/7609801/63525575-21ec2a80-c528-11e9-974e-844956e8d0f1.png)
 
 - With `ls` flags. You can use `ls` flags, just put it after `--`, something like `ls --sort -- -lAst . ./pictures`
 
-    ![image](https://user-images.githubusercontent.com/7609801/63422381-72825b80-c434-11e9-8d6f-8c6505bc7e5b.png)
+    ![image](https://user-images.githubusercontent.com/7609801/63525595-29133880-c528-11e9-9099-27f468dbdcda.png)
 
 - With `--dir-color`, `--file-color`, `--meta-color` and `--error-color` : Change default color
 
-    ![image](https://user-images.githubusercontent.com/7609801/63423430-7f07b380-c436-11e9-8309-0671bee0db18.png)
+    ![image](https://user-images.githubusercontent.com/7609801/63525610-2c0e2900-c528-11e9-8b32-45483e02fbf3.png)
 
 ## Contributing
 
